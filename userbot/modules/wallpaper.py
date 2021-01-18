@@ -19,7 +19,7 @@ async def _(event):
     try:
         query = event.pattern_match.group(1)
         await event.edit("`Processing..`")
-        async with bot.conversation("@XBOTGBOT") as conv:
+        async with bot.conversation("@paimonnbot") as conv:
             try:
                 query1 = await conv.send_message(f"/wall {query}")
                 asyncio.sleep(3)
@@ -27,7 +27,7 @@ async def _(event):
                 r2 = await conv.get_response()
                 await bot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                return await event.reply("Unblock @XBOTGBOT plox")
+                return await event.reply("Unblock @paimonnbot plox")
             if r1.text.startswith("No"):
                 return await event.edit(f"`No result found for` **{query}**")
             else:
@@ -54,7 +54,7 @@ async def _(event):
         await event.delete()
         os.system("rm *.png *.jpg")
     except TimeoutError:
-        return await event.edit("`@XBOTGBOT isnt responding..`")
+        return await event.edit("`@paimonnbot isnt responding..`")
 
 
 CMD_HELP.update({"wallpaper": ">`.wall <query>`"
